@@ -151,6 +151,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
+  maxHealth: 5
   WASD_Action:
     m_Name: WASD_Action
     m_Type: 0
@@ -200,6 +201,7 @@ MonoBehaviour:
       m_Action: WASD_Action
       m_Flags: 8
     m_Flags: 0
+  speed: 3
 --- !u!50 &1242226918192117207
 Rigidbody2D:
   serializedVersion: 5
@@ -224,7 +226,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 0
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!61 &-7033687791130381796
