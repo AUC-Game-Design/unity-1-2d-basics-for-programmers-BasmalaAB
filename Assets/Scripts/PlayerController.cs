@@ -8,12 +8,13 @@ using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject projectilePrefab;
+
     Animator animator;
     Vector2 moveDirection = new Vector2(1, 0);
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     public InputAction MoveAction;
-    public Rigidbody2D rigidbody2d;
+    Rigidbody2D rigidbody2d;
     Vector2 move2;
     Vector2 move;
     public InputAction WASD_Action;
@@ -22,27 +23,26 @@ public class PlayerController : MonoBehaviour
 
     public int maxHealth = 5;
     int currentHealth;
-
-    //public string current_player = "Ruby";
-
     public int health { get { return currentHealth; } }
+
 
     // Variables related to temporary invincibility
     public float timeInvincible = 2.0f;
     bool isInvincible;
     float damageCooldown;
 
+    //public string current_player = "Ruby";
+
+
     void Start()
     {
-        //QualitySettings.vSyncCount = 0;
-        //Application.targetFrameRate = 10;
         MoveAction.Enable();
-        //rigidbody2d = GetComponent<Rigidbody2D>();
-
         WASD_Action.Enable();
-        currentHealth = maxHealth;
-        animator = GetComponent<Animator>();
 
+        animator = GetComponent<Animator>();
+        rigidbody2d = GetComponent<Rigidbody2D>();
+
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -76,6 +76,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Launch();
+        }
         /*if (Keyboard.current.leftShiftKey.IsPressed() && current_player == "Ruby")
         {
             current_player = "Sugar";
@@ -101,12 +105,10 @@ public class PlayerController : MonoBehaviour
         if (amount < 0)
         {
             if (isInvincible)
-            {
                 return;
-            }
+
             isInvincible = true;
             damageCooldown = timeInvincible;
-
             animator.SetTrigger("Hit");
         }
 
@@ -114,4 +116,12 @@ public class PlayerController : MonoBehaviour
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
     }
 
+    void Launch()
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab, rigidbody2d.position + Vector2.up * 0.5f, Quaternion.identity);
+        Projectile projectile = projectileObject.GetComponent<Projectile>();
+        projectile.Launch(moveDirection, 300);
+
+        animator.SetTrigger("Launch");
+    }
 }

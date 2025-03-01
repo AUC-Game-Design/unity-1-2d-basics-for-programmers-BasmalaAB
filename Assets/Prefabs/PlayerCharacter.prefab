@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1242226918192117207}
   - component: {fileID: -7033687791130381796}
   - component: {fileID: 7063075435469314661}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerCharacter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,6 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbd2c39a15db80d49b2c4e895463f87d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 8544329474336361212, guid: 93987db09f0a9c6429d9b4923b1ee146, type: 3}
   MoveAction:
     m_Name: Move
     m_Type: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
-  rigidbody2d: {fileID: 0}
+  rigidbody2d: {fileID: 1242226918192117207}
   WASD_Action:
     m_Name: WASD_Action
     m_Type: 0
