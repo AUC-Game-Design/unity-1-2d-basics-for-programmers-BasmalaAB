@@ -153,7 +153,6 @@ MonoBehaviour:
       m_Action: Move
       m_Flags: 8
     m_Flags: 0
-  rigidbody2d: {fileID: 1242226918192117207}
   WASD_Action:
     m_Name: WASD_Action
     m_Type: 0
@@ -206,6 +205,23 @@ MonoBehaviour:
   speed: 3
   maxHealth: 5
   timeInvincible: 2
+  talkAction:
+    m_Name: Talk
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: 99601f87-975d-4341-9657-93e84fe2f803
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 0a7b8dde-6cb6-4657-a58e-9aeeabcc7609
+      m_Path: <Keyboard>/x
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Talk
+      m_Flags: 0
+    m_Flags: 0
 --- !u!50 &1242226918192117207
 Rigidbody2D:
   serializedVersion: 5

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     Vector2 move;
     public InputAction WASD_Action;
     public float speed = 3.0f;
-
+    private string text_displayed = "Help me!!";
 
     public int maxHealth = 5;
     int currentHealth;
@@ -33,11 +33,13 @@ public class PlayerController : MonoBehaviour
 
     //public string current_player = "Ruby";
 
+    public InputAction talkAction;
 
     void Start()
     {
         MoveAction.Enable();
         WASD_Action.Enable();
+        talkAction.Enable();
 
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
@@ -80,6 +82,13 @@ public class PlayerController : MonoBehaviour
         {
             Launch();
         }
+
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            Debug.Log("Pressed X");
+            FindFriend();
+        }
+
         /*if (Keyboard.current.leftShiftKey.IsPressed() && current_player == "Ruby")
         {
             current_player = "Sugar";
@@ -123,5 +132,32 @@ public class PlayerController : MonoBehaviour
         projectile.Launch(moveDirection, 300);
 
         animator.SetTrigger("Launch");
+    }
+
+    void FindFriend()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(rigidbody2d.position + Vector2.up * 0.2f, moveDirection, 2.5f, LayerMask.GetMask("NPC"));
+        if (hit.collider != null)
+        {
+            NonPlayerCharacter character = hit.collider.GetComponent<NonPlayerCharacter>();
+            if (character != null)
+            {
+                if (character.identity == "Froggo")
+                {
+                    text_displayed = "Hey! Help me fix all those broken robots! Either one of you works";
+                    UIHandler.instance.DisplayDialogue(text_displayed);
+                }
+                else if(character.identity == "Martha")
+                {
+                    text_displayed = "I'm looking for my lost book... have you seen it anywhere, Ruby?";
+                    UIHandler.instance.DisplayDialogue(text_displayed);
+                }
+                else if (character.identity == "Teddy")
+                {
+                    text_displayed = "I've lost my bag of candy! Please help me find it Sugar!";
+                    UIHandler.instance.DisplayDialogue(text_displayed);
+                }
+            }
+        }
     }
 }
