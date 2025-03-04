@@ -18,12 +18,18 @@ public class EnemyController : MonoBehaviour
 
     bool broken = true;
 
+    AudioSource audioSource;
+    public AudioClip collectedClip; //Fixed Clip
+    public AudioClip collectedClip2; //Hit
+
+    public ParticleSystem smokeEffect;
+
     void Start()
     {
         rigidbody2d = GetComponent<Rigidbody2D>();
         timer = changeTime;
         animator = GetComponent<Animator>();
-
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -87,5 +93,9 @@ public class EnemyController : MonoBehaviour
         broken = false;
         rigidbody2d.simulated = false;
         animator.SetTrigger("Fixed");
+        audioSource.Stop();
+        audioSource.loop = false;
+        audioSource.PlayOneShot(collectedClip);
+        smokeEffect.Stop();
     }
 }

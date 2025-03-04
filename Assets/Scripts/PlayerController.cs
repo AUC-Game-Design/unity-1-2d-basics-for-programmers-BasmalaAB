@@ -35,6 +35,11 @@ public class PlayerController : MonoBehaviour
 
     public InputAction talkAction;
 
+    AudioSource audioSource;
+    public AudioClip audioClip1; //walking
+    public AudioClip audioClip2; //hit
+    public AudioClip audioClip3; //projectile
+
     void Start()
     {
         MoveAction.Enable();
@@ -43,6 +48,7 @@ public class PlayerController : MonoBehaviour
 
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
 
         currentHealth = maxHealth;
     }
@@ -57,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             moveDirection.Set(move.x, move.y);
             moveDirection.Normalize();
+            //walking sound? only when person is walking
         }
         if (!Mathf.Approximately(move2.x, 0.0f) || !Mathf.Approximately(move2.y, 0.0f))
         {
@@ -81,6 +88,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.C))
         {
             Launch();
+            audioSource.PlayOneShot(audioClip3);
         }
 
         if (Input.GetKeyDown(KeyCode.X))
@@ -119,6 +127,7 @@ public class PlayerController : MonoBehaviour
             isInvincible = true;
             damageCooldown = timeInvincible;
             animator.SetTrigger("Hit");
+            audioSource.PlayOneShot(audioClip2);
         }
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
@@ -159,5 +168,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void PlaySound(AudioClip clip)
+    {
+        audioSource.PlayOneShot(clip);
     }
 }
