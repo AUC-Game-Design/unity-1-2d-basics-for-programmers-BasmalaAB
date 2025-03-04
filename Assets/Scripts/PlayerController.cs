@@ -31,8 +31,6 @@ public class PlayerController : MonoBehaviour
     bool isInvincible;
     float damageCooldown;
 
-    //public string current_player = "Ruby";
-
     public InputAction talkAction;
 
     AudioSource audioSource;
@@ -85,7 +83,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Launch();
             audioSource.PlayOneShot(audioClip3);
@@ -96,16 +94,6 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Pressed X");
             FindFriend();
         }
-
-        /*if (Keyboard.current.leftShiftKey.IsPressed() && current_player == "Ruby")
-        {
-            current_player = "Sugar";
-        }
-        else
-        {
-            current_player = "Ruby";
-            
-        }*/
     }
 
     private void FixedUpdate()
