@@ -16,7 +16,7 @@ public class EnemyController : MonoBehaviour
 
     Animator animator;
 
-    bool broken = true;
+    public bool broken = true;
 
     AudioSource audioSource;
     public AudioClip collectedClip; //Fixed Clip
@@ -37,19 +37,25 @@ public class EnemyController : MonoBehaviour
     {
         timer = timer - Time.deltaTime;
 
+        //if (timer < 0)
+        //{
+        //    int D_value = Random.Range(0, 2);
+
+        //    if (D_value > 0)
+        //    {
+        //        vertical = true;
+        //    }
+        //    else
+        //    {
+        //        vertical = false;
+        //    }
+
+        //    direction = -direction;
+        //    timer = changeTime;
+        //}
+
         if (timer < 0)
         {
-            int D_value = Random.Range(0, 2);
-
-            if (D_value > 0)
-            {
-                vertical = true;
-            }
-            else
-            {
-                vertical = false;
-            }
-
             direction = -direction;
             timer = changeTime;
         }
