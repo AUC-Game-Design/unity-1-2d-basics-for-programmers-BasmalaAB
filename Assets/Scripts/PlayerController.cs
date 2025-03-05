@@ -4,6 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using UnityEngine.InputSystem.XR;
+//using static Unity.Cinemachine.InputAxisControllerBase<T>;
+using UnityEngine.Analytics;
+using UnityEngine.SceneManagement;
 
 
 public class PlayerController : MonoBehaviour
@@ -120,6 +123,11 @@ public class PlayerController : MonoBehaviour
 
         currentHealth = Mathf.Clamp(currentHealth + amount, 0, maxHealth);
         UIHandler.instance.SetHealthValue(currentHealth / (float)maxHealth);
+
+        if (currentHealth <= 0)
+        {
+           SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload scene
+        }
     }
 
     void Launch()
