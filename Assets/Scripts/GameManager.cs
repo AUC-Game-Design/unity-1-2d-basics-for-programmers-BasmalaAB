@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     private PlayerController controller1; // Store PlayerController component
     private PlayerController controller2; // Store PlayerController component
 
-    public CinemachineVirtualCamera cinemachineCam; // Assign your Cinemachine Virtual Camera
+    public CinemachineCamera cinemachineCam; // Assign your Cinemachine Virtual Camera
     void Start()
     {
         activePlayer = player1; // Start with player1 active

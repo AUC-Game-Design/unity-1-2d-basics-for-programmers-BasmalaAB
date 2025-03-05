@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 1078756385}
   player2: {fileID: 1248604923}
-  cinemachineCam: {fileID: 0}
+  cinemachineCam: {fileID: 459998726}
 --- !u!4 &245404460
 Transform:
   m_ObjectHideFlags: 0
@@ -1743,7 +1743,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 5927664461549334769}
+    TrackingTarget: {fileID: 0}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -34632,11 +34632,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!4 &5927664461549334769 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2390588956779807461, guid: b533a17901849564c94683edf238400d, type: 3}
-  m_PrefabInstance: {fileID: 5927664461549334757}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6975304678055902416
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34702,6 +34697,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 245404460}
   - {fileID: 619394802}
   - {fileID: 519420032}
   - {fileID: 5927664461549334757}
@@ -34720,4 +34716,3 @@ SceneRoots:
   - {fileID: 1189841749}
   - {fileID: 1489851475}
   - {fileID: 1018945801}
-  - {fileID: 245404460}
